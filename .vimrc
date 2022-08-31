@@ -6,10 +6,11 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 " turn hybrid line numbers on
-:set number relativenumber
-:set nu rnu
-" set text-width
-:set tw=79
+set number relativenumber
+set nu rnu
+set tw=79
+set autoindent
+set mouse=a 
 
 filetype plugin on
 
