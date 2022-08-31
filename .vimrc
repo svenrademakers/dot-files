@@ -4,8 +4,6 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
- 
-nnoremap <C-p> :GFiles<Cr>
 
 " turn hybrid line numbers on
 :set number relativenumber
@@ -16,14 +14,26 @@ nnoremap <C-p> :GFiles<Cr>
 filetype plugin on
 
 call plug#begin()
+Plug 'mileszs/ack.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'joshdick/onedark.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'BurntSushi/ripgrep'
 Plug 'ggreer/the_silver_searcher'
 call plug#end()
+
+" setup fzf searching
+nnoremap <C-g> :Ag<Cr>
+nnoremap <C-p> :GFiles<Cr>
+let g:ackprg = 'ag --nogroup --nocolor --column'
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+set laststatus=2
+set statusline=%F%m%r%h%w%=\ [%Y]\ [%{&ff}]\ [%04l,%04v]\ [%p%%]\ [%L]
+set backspace=indent,eol,start
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
