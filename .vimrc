@@ -12,12 +12,13 @@ set tw=79
 set autoindent
 set mouse=a 
 
-filetype plugin on
+filetype plugin indent on
 
 call plug#begin()
 Plug 'mileszs/ack.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'joshdick/onedark.vim'
+Plug 'rust-lang/rust.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -25,6 +26,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'BurntSushi/ripgrep'
 Plug 'ggreer/the_silver_searcher'
 call plug#end()
+
+let g:rustfmt_autosave = 1
 
 " setup fzf searching
 nnoremap <C-g> :Ag<Cr>
