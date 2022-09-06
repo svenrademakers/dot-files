@@ -1,5 +1,3 @@
-set nocompatible            " disable compatibility to old-time vi
-set showmatch               " show matching 
 set ignorecase              " case insensitive 
 set mouse=v                 " middle-click paste with 
 set hlsearch                " highlight search 
@@ -7,7 +5,7 @@ set incsearch               " incremental search
 set tabstop=2               " number of columns occupied by a tab 
 set softtabstop=2           " see multiple spaces as tabstops so <BS> does the right thing
 set shiftwidth=2            " width for autoindents
-set wildmode=longest,list   " get bash-like tab completions
+"set wildmode=longest,list   " get bash-like tab completions
 filetype plugin indent on   "allow auto-indenting depending on file type
 syntax on                   " syntax highlighting
 set mouse=a                 " enable mouse click
@@ -23,6 +21,8 @@ set noswapfile	            " disable creating swap file
 nnoremap <C-g> :Ag<Cr>
 nnoremap <C-p> :GFiles<Cr>
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+autocmd FileType CMAKE  shiftwidth=2 softtabstop=2 expandtab
 
 lua require('init')
 lua require('plugins')
