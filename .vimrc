@@ -13,6 +13,7 @@ set autoindent
 set mouse=a 
 
 filetype plugin indent on
+:so ~/.vim/ftplugin/rust.vim
 
 call plug#begin()
 Plug 'mileszs/ack.vim'
