@@ -34,6 +34,13 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-buffer'                            
   use 'nvim-treesitter/nvim-treesitter' 
   use 'hrsh7th/vim-vsnip'   
+  use 'nvim-lua/plenary.nvim' 
+  use 'BurntSushi/ripgrep'
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+  use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+         requires = { {'nvim-lua/plenary.nvim'} }
+      }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

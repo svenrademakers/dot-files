@@ -18,11 +18,13 @@ set noswapfile	            " disable creating swap file
 " set backupdir=~/.cache/vim " Directory to store backup files.
 
 " setup fzf searching
-nnoremap <C-g> :Ag<Cr>
-nnoremap <C-p> :GFiles<Cr>
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
-autocmd FileType CMAKE  shiftwidth=2 softtabstop=2 expandtab
+"nnoremap <C-g> :Ag<Cr>
+"nnoremap <C-p> :GFiles<Cr>
+"let g:ackprg = 'ag --nogroup --nocolor --column'
+"nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+"nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+"nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+"nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 lua require('init')
 lua require('plugins')
