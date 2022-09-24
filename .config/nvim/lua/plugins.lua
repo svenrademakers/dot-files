@@ -1,4 +1,3 @@
-
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -15,8 +14,10 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
   use 'navarasu/onedark.nvim'	
   use 'wbthomason/packer.nvim'
+  use 'vim-airline/vim-airline'
+  use 'vim-airline/vim-airline-themes'
   use 'mileszs/ack.vim'
-  use 'jiangmiao/auto-pairs'
+  --use 'jiangmiao/auto-pairs'
   -- plugins for rust development
   use 'williamboman/mason.nvim'    
   use 'williamboman/mason-lspconfig.nvim'
@@ -34,17 +35,24 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-buffer'                            
   use 'nvim-treesitter/nvim-treesitter' 
   use 'hrsh7th/vim-vsnip'   
-  use 'nvim-lua/plenary.nvim' 
-  use 'BurntSushi/ripgrep'
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+  -- pickers and finders:
+  use "nvim-lua/plenary.nvim"
   use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
-         requires = { {'nvim-lua/plenary.nvim'} }
-      }
+    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+  use 'BurntSushi/ripgrep'
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
     require('packer').sync()
   end
 end)
+
+-- plugin is not working ??
+--require('telescope').load_extension('fzf')
 

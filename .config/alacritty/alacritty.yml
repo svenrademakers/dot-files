@@ -1,18 +1,5 @@
 env:
     TERM: xterm-256color
 
-font:
-    normal:
-        family: MesloLGM Nerd Font
-        style: Regular
-    bold:
-        family: MesloLGM Nerd Font
-        style: Bold
-    italic:
-        family: MesloLGM Nerd Font
-        style: Italic
-    size: 14.5
-
 selection:
     save_to_clipboard: true
-
