@@ -17,7 +17,10 @@ return require('packer').startup(function(use)
   use 'vim-airline/vim-airline'
   use 'vim-airline/vim-airline-themes'
   use 'mileszs/ack.vim'
-  --use 'jiangmiao/auto-pairs'
+  use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+}
   -- plugins for rust development
   use 'williamboman/mason.nvim'    
   use 'williamboman/mason-lspconfig.nvim'
@@ -38,14 +41,16 @@ return require('packer').startup(function(use)
   -- pickers and finders:
   use "nvim-lua/plenary.nvim"
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    'nvim-telescope/telescope.nvim', branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use 'BurntSushi/ripgrep'
-  use {
+  use 'sharkdp/fd'
+  --[[ use {
     'nvim-telescope/telescope-fzf-native.nvim',
     run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   }
+  --]]
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

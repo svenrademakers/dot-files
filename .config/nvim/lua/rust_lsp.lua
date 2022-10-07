@@ -62,8 +62,8 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<Up>'] = cmp.mapping.select_prev_item(),
+    ['<Down>'] = cmp.mapping.select_next_item(),
     -- Add tab support
     ['<S-Tab>'] = cmp.mapping.select_prev_item(),
     ['<Tab>'] = cmp.mapping.select_next_item(),
@@ -105,13 +105,29 @@ cmp.setup({
   },
 })
 
+-- Treesitter Plugin Setup 
+require('nvim-treesitter.configs').setup {
+  ensure_installed = { "lua", "rust", "toml" },
+  auto_install = true,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting=false,
+  },
+  ident = { enable = true }, 
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_lines = nil,
+  }
+}
+
 vim.keymap.set('n','K','<cmd>lua vim.lsp.buf.hover()<CR>', { silent = true })
-vim.keymap.set('n','gD','<cmd>lua vim.lsp.buf.implementation()<CR>', { silent = true })
+--vim.keymap.set('n','gD','<cmd>lua vim.lsp.buf.implementation()<CR>', { silent = true })
 vim.keymap.set('n','<c-k>','<cmd>lua vim.lsp.buf.signature_help()<CR>', { silent = true })
-vim.keymap.set('n','1gD','<cmd>lua vim.lsp.buf.type_definition()<CR>', { silent = true })
-vim.keymap.set('n','gr','<cmd>lua vim.lsp.buf.references()<CR>', { silent = true })
-vim.keymap.set('n','g0','<cmd>lua vim.lsp.buf.document_symbol()<CR>', { silent = true })
-vim.keymap.set('n','gW','<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', { silent = true })
-vim.keymap.set('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
-vim.keymap.set('n','<c-]>','<cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
-vim.keymap.set('n','ga', '<cmd> lua vim.lsp.buf.code_action()<CR>', { silent = true })
+--vim.keymap.set('n','1gD','<cmd>lua vim.lsp.buf.type_definition()<CR>', { silent = true })
+--vim.keymap.set('n','gr','<cmd>lua vim.lsp.buf.references()<CR>', { silent = true })
+--vim.keymap.set('n','g0','<cmd>lua vim.lsp.buf.document_symbol()<CR>', { silent = true })
+--vim.keymap.set('n','gW','<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', { silent = true })
+--vim.keymap.set('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
+--vim.keymap.set('n','<c-]>','<cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
+vim.keymap.set('n', 'gs', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })

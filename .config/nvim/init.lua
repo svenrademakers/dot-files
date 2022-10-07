@@ -49,6 +49,25 @@ vim.keymap.set('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_gr
 vim.keymap.set('n', '<leader>fb', "<cmd>lua require('telescope.builtin').buffers()<cr>")
 vim.keymap.set('n', '<leader>fh', "<cmd>lua require('telescope.builtin').help_tags()<cr>")
 
-vim.keymap.set('n', '<c-p>', "<cmd>lua require('telescope.builtin').git_files()<cr>")
-vim.keymap.set('n', '<c-P>', "<cmd>lua require('telescope.builtin').find_files()<cr>")
+vim.keymap.set('n', '<c-p>', "<cmd>lua require('telescope.builtin').find_files() hidden=true<CR>")
+vim.keymap.set('n', '<c-f>', "<cmd>lua require('telescope.builtin').grep_string()<cr>")
 vim.keymap.set('n', '<c-F>', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
+
+vim.keymap.set('n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
+vim.keymap.set('n', 'gD', "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
+vim.keymap.set('n', 'gW', "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>")
+vim.keymap.set('n', 'g0', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>")
+vim.keymap.set('n', 'ge', "<cmd>lua require('telescope.builtin').diagnostics()<cr>")
+vim.keymap.set('n', 'gi', "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>")
+vim.keymap.set('n', 'gtd', "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>")
+vim.keymap.set('n', 'gd', "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
+vim.keymap.set('n','ga', '<cmd> lua vim.lsp.buf.code_action()<CR>', { silent = true })
+
+-- auto-pairs
+-- If you want insert `(` after select function or method item
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp = require('cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)

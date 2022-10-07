@@ -117,7 +117,7 @@ __git_files () {
 
 USB_SERIAL=/dev/tty.usbserial-143240
 export UIC_ROOT="/Users/svradema/git/uic"
-export UIC_RPI_IP="10.160.22.34"
+export UIC_RPI_IP="10.160.22.21"
 #UIC_RPI_IP="192.168.50.62"
 #export GSDK_LOCATION='/Applications/SimplicityStudio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.0'
 alias scp_uic='scp ${1} pi@$UIC_RPI_IP:/tmp'
@@ -126,8 +126,9 @@ alias rrdocker="docker run -it --rm --privileged --mount type=bind,source=/Appli
 alias config='cd ${UIC_ROOT}/build && rm -rf ./* && cmake .. -DCMAKE_BUILD_TYPE=Debug && make'
 alias b='ninja $1'
 alias c='cmake -GNinja -DCMAKE_BUILD_TYPE="Debug" $($HOME/.uic/disable_build_options.sh BUILD_ZPC) ${1} ..'
+alias zpc_build= '$HOME/.uic/disable_build_options.sh BUILD_ZPC'
 alias print_build_options=$HOME/.uic/disable_build_options.sh
 alias c11='PATH=/usr/local/cxx11/include:/usr/local/cxx11/lib:/usr/local/cxx11/lib/cmake/Boost-1.79.0:/usr/local/cxx11/share/cmake:$PATH c -DCMAKE_C_COMPILER=gcc-11 -DCMAKE_CXX_COMPILER=g++-11 -DASAN=True -DCMAKE_INSTALL_PREFIX:PATH=/usr/local/cxx11'
-alias sshb='ssh pi@${UIC_RPI_IP}'
+alias sshb='ssh sven@${UIC_RPI_IP}'
 #. "${UIC_ROOT}/scripts/internal/pi_uic.source"
 #. "${UIC_ROOT}/scripts/source_env_prompt.sh"
