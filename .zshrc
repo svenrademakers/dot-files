@@ -132,3 +132,6 @@ alias c11='PATH=/usr/local/cxx11/include:/usr/local/cxx11/lib:/usr/local/cxx11/l
 alias sshb='ssh sven@${UIC_RPI_IP}'
 #. "${UIC_ROOT}/scripts/internal/pi_uic.source"
 #. "${UIC_ROOT}/scripts/source_env_prompt.sh"
+cd $HOME/uic
+alias colemak=setxkbmap us -variant colemak_dh -option lv3:ralt_alt
+

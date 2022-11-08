@@ -13,6 +13,7 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
   use 'navarasu/onedark.nvim'	
+  use 'xiyaowong/nvim-transparent'
   use 'wbthomason/packer.nvim'
   use 'vim-airline/vim-airline'
   use 'vim-airline/vim-airline-themes'
@@ -21,6 +22,7 @@ return require('packer').startup(function(use)
 	"windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
 }
+  use 'rhysd/vim-clang-format'
   -- plugins for rust development
   use 'williamboman/mason.nvim'    
   use 'williamboman/mason-lspconfig.nvim'
@@ -51,13 +53,15 @@ return require('packer').startup(function(use)
     run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   }
   --]]
+  use 'weirongxu/plantuml-previewer.vim'
+  use 'tyru/open-browser.vim'
+  use 'aklt/plantuml-syntax'
+  use 'preservim/nerdtree'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
     require('packer').sync()
   end
 end)
-
--- plugin is not working ??
---require('telescope').load_extension('fzf')
 

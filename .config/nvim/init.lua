@@ -8,7 +8,9 @@ vim.opt.mouse = 'n'
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.textwidth = 80
 vim.opt.cursorline = true
+vim.opt.clipboard = 'unnamedplus'
 vim.o.smartcase = true
 vim.bo.swapfile = false
 vim.bo.smartindent = true
@@ -63,6 +65,21 @@ vim.keymap.set('n', 'gtd', "<cmd>lua require('telescope.builtin').lsp_type_defin
 vim.keymap.set('n', 'gd', "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
 vim.keymap.set('n','ga', '<cmd> lua vim.lsp.buf.code_action()<CR>', { silent = true })
 
+---- colemak remaps
+vim.keymap.set('n','Q', ':q', { silent = true }) 
+-- navigation keys
+vim.keymap.set('','m', 'h', { silent = true }) 
+vim.keymap.set('','e', 'k', { silent = true })
+vim.keymap.set('','i', 'l', { silent = true })
+vim.keymap.set('','n', 'j', { silent = true })
+
+vim.keymap.set('','K', 'E', { silent = true })
+vim.keymap.set('','k', 'e', { silent = true })
+vim.keymap.set('','H', 'N', { silent = true })
+vim.keymap.set('','h', 'n', { silent = true })
+-- insert key
+vim.keymap.set('','L', 'I', { silent = true })
+vim.keymap.set('','l', 'i', { silent = true })
 -- auto-pairs
 -- If you want insert `(` after select function or method item
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
@@ -71,3 +88,6 @@ cmp.event:on(
   'confirm_done',
   cmp_autopairs.on_confirm_done()
 )
+
+-- overwrite plantuml jar file 
+vim.g['plantuml_previewer#plantuml_jar_path'] = '/usr/share/java/plantuml/plantuml.jar'

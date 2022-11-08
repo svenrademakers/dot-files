@@ -11,4 +11,5 @@ vim.g['Powerline_symbols'] = 'fancy'
 vim.g['airline_left_sep'] = '»'
 vim.g['airline_left_sep'] = ''
 vim.g['airline_right_sep'] = '«'
+vim.g['transparent_enabled'] = true
 vim.g['airline_right_sep'] = ''
