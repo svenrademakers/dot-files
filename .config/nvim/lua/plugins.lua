@@ -53,10 +53,12 @@ return require('packer').startup(function(use)
     run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   }
   --]]
+
   use 'weirongxu/plantuml-previewer.vim'
   use 'tyru/open-browser.vim'
   use 'aklt/plantuml-syntax'
   use 'preservim/nerdtree'
+  use 'umaumax/vim-format'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
