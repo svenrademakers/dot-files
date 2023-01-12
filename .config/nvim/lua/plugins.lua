@@ -59,7 +59,9 @@ return require('packer').startup(function(use)
   use 'aklt/plantuml-syntax'
   use 'preservim/nerdtree'
   use 'umaumax/vim-format'
-
+  use "IndianBoy42/tree-sitter-just"
+  use 'NoahTheDuke/vim-just'
+  use 'LnL7/vim-nix'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

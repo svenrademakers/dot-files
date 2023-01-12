@@ -75,11 +75,13 @@ vim.keymap.set('','n', 'j', { silent = true })
 
 vim.keymap.set('','K', 'E', { silent = true })
 vim.keymap.set('','k', 'e', { silent = true })
-vim.keymap.set('','H', 'N', { silent = true })
-vim.keymap.set('','h', 'n', { silent = true })
+vim.keymap.set('','H', 'M', { silent = true })
+vim.keymap.set('','h', 'm', { silent = true })
 -- insert key
 vim.keymap.set('','L', 'I', { silent = true })
 vim.keymap.set('','l', 'i', { silent = true })
+vim.keymap.set('','J', 'N', { silent = true })
+vim.keymap.set('','j', 'n', { silent = true })
 -- auto-pairs
 -- If you want insert `(` after select function or method item
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')

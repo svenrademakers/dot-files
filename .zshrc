@@ -114,7 +114,15 @@ plugins=(git)
 __git_files () { 
     _wanted files expl 'local files' _files     
 }
-
+function fif() {
+  rg --ignore-case --line-number --color=always --no-heading --glob "${1:-}" '' | fzf --delimiter=: --ansi --preview='bat --paging=never --style=numbers,header-filename,snip,rule,changes --color=always --highlight-line {2} {1}' --preview-window='~1,+{2}+1/2' --nth=3.. | rg '^(.+?:\d+?):' --only-matching --replace='$1' | xargs --no-run-if-empty "${EDITOR}"
+}
+function _fif() {
+  fif '*'
+  zle reset-prompt
+}
+zle -N _fif
+bindkey '^f' _fif
 USB_SERIAL=/dev/tty.usbserial-143240
 export UIC_ROOT="/Users/svradema/git/uic"
 export UIC_RPI_IP="10.160.22.21"
