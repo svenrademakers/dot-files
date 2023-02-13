@@ -50,6 +50,8 @@ vim.keymap.set('','m', 'h', { silent = true })
 vim.keymap.set('','e', 'k', { silent = true })
 vim.keymap.set('','i', 'l', { silent = true })
 vim.keymap.set('','n', 'j', { silent = true })
+-- extra insert key
+vim.keymap.set('','l', 'i', { silent = true })
 vim.keymap.set('','<leader>e', 'e', { silent = true })
 vim.keymap.set('','<leader>m', 'm', { silent = true })
 vim.keymap.set('','<leader>i', 'i', { silent = true })
