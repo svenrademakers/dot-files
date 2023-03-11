@@ -66,4 +66,13 @@ return require('packer').startup(function(use)
             {'rafamadriz/friendly-snippets'}, -- Optional
         }
     }
+
+    --
+    -- markdown processor
+    --
+   use({
+       "iamcco/markdown-preview.nvim",
+       run = function() vim.fn["mkdp#util#install"]() end,
+   })
+
 end)

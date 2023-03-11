@@ -31,3 +31,7 @@ vim.diagnostic.config({
     },
 })
 
+--
+-- manual format aanschoppen
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+
