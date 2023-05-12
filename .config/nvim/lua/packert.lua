@@ -75,4 +75,12 @@ return require('packer').startup(function(use)
        run = function() vim.fn["mkdp#util#install"]() end,
    })
 
+   --
+   -- Plantuml plantuml-previewer
+   --
+   use({
+       "weirongxu/plantuml-previewer.vim",
+       requires = { { 'tyru/open-browser.vim' } }
+   })
+
 end)
