@@ -1,20 +1,8 @@
-# Use powerline
-USE_POWERLINE="true"
-# Source manjaro-zsh-configuration
-if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
-  source /usr/share/zsh/manjaro-zsh-config
-fi
-# Use manjaro zsh prompt
-if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
-  source /usr/share/zsh/manjaro-zsh-prompt
-fi
-
-export CLICOLOR=1
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-[[ $OSTYPE == 'darwin'* ]] && export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -84,7 +72,7 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-[[ $OSTYPE == 'darwin'* ]] && source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -111,15 +99,3 @@ plugins=(git)
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-__git_files () { 
-    _wanted files expl 'local files' _files     
-}
-function fif() {
-  rg --ignore-case --line-number --color=always --no-heading --glob "${1:-}" '' | fzf --delimiter=: --ansi --preview='bat --paging=never --style=numbers,header-filename,snip,rule,changes --color=always --highlight-line {2} {1}' --preview-window='~1,+{2}+1/2' --nth=3.. | rg '^(.+?:\d+?):' --only-matching --replace='$1' | xargs --no-run-if-empty "${EDITOR}"
-}
-function _fif() {
-  fif '*'
-  zle reset-prompt
-}
-zle -N _fif
-bindkey '^f' _fif
