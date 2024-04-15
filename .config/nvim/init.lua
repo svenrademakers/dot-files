@@ -22,6 +22,9 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.updatetime = 50
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
+vim.opt.wrap = true
 --vim.opt.syntax = 'on'
 --vim.api.nvim_command('filetype plugin indent on')
 ----Set completeopt to have a better completion experience
