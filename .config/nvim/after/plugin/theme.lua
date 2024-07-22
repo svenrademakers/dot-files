@@ -2,7 +2,7 @@ require('onedark').setup {
     style = 'cool',
     transparent = true,
     term_colors = true,
-     lualine = {
+    lualine = {
         transparent = true, -- lualine center bar transparency
     }
 }
@@ -32,16 +32,18 @@ vim.g['Powerline_symbols'] = 'fancy'
 vim.cmd.colorscheme("onedark")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-require('bufferline').setup{
+
+-- Bufferline
+require('bufferline').setup {
     options = {
         numbers = function(opts)
             return string.format('%s|%s', opts.id, opts.raise(opts.ordinal))
         end,
         indicator = {
-            icon ='',
+            icon = '',
             style = 'none',
         },
         separator_style = { '', '' },
-        diagnostics = "nvim_lsp"
+        diagnostics = "nvim_lsp",
     }
 }

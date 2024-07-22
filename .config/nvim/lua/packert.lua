@@ -10,7 +10,7 @@ return require('packer').startup(function(use)
     }
     use {
         'akinsho/bufferline.nvim',
-        tag = "v3.*",
+        tag = "*",
         requires = 'nvim-tree/nvim-web-devicons'
     }
     use 'preservim/nerdtree'
@@ -46,7 +46,7 @@ return require('packer').startup(function(use)
     --
     use {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
+        branch = 'v3.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },             -- Required
