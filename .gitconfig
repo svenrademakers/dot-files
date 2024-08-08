@@ -21,3 +21,5 @@
 	required = true
 [safe]
 	directory = /tmp
+[push]
+	default = current

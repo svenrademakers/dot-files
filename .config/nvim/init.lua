@@ -59,3 +59,12 @@ vim.keymap.set('', '<leader>e', 'e', { silent = true })
 vim.keymap.set('', '<leader>m', 'm', { silent = true })
 vim.keymap.set('', '<leader>i', 'i', { silent = true })
 vim.keymap.set('', '<leader>n', 'n', { silent = true })
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern = {"*"},
+    callback = function(ev)
+        save_cursor = vim.fn.getpos(".")
+        vim.cmd([[%s/\s\+$//e]])
+        vim.fn.setpos(".", save_cursor)
+    end,
+})
