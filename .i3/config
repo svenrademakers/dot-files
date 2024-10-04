@@ -8,12 +8,12 @@ set $mod Mod4
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border none
+default_border pixel 2
 default_floating_border 1pixel
-for_window [class="^.*"] border pixel 1
+#for_window [class="^.*"] border pixel 1
 
 # Hide borders
-hide_edge_borders true
+#hide_edge_borders true
 
 # change borders
 bindsym $mod+u border none
@@ -34,7 +34,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym F12 exec --no-startup-id rofi -show drun -config ~/.config/rofi/config.rasi
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -266,12 +266,13 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
+#bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id optimus-manager-qt
-exec_always nitrogen --restore
+exec_always --no-startup-id "killall -q picom; picom --config ~/.config/picom.conf"
+exec_always --no-startup-id "killall -q polybar; polybar"
 #exec --no-startup-id blueman-applet
 #exec --no-startup-id xfce4-power-manager
 # exec --no-startup-id blueman-applet
@@ -311,48 +312,19 @@ set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
-set $background_color #00000050
-set $darkened_color #595B5B
-set $default_text_color #DDDDDD
+set $background_color #171d23
+set $background_alt_color #2e333e
+#set $default_text_color #DDDDDD
 set $primary_color #009bffCC
-
-# Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	i3bar_command i3bar --transparency
-	status_command i3status
-	position top
-
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
-
-	bindsym button4 nop
-	bindsym button5 nop
-#   font xft:URWGothic-Book 11
-	strip_workspace_numbers yes
-
-    colors {
-        background $background_color
-        statusline  $default_text_color
-        separator $darkened_color
-
-#                      border  backgr. text
-        focused_workspace  $primary_color $background_color $default_text_color
-        active_workspace   $darkened_color $background_color #FDF6E3
-        inactive_workspace $darkened_color $background_color #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
-}
 
 # hide/unhide i3status bar
 bindsym $mod+h bar mode toggle
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+  client.focused          $background_alt_color $background_alt_color $background_alt_color $background_alt_color
+  client.focused_inactive $background_color $background_color $background_color $background_color
+  client.unfocused        $background_color $background_color $background_color $background_color
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000
 
