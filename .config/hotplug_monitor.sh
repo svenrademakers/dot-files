@@ -2,7 +2,7 @@
 
 export PATH=/usr/bin
 export DISPLAY=:0
-external_display_status=`cat /sys/class/drm/card0-DP-1/status || echo "disconnected"`
+external_display_status=`cat /sys/class/drm/card0-eDP-1/status || echo "disconnected"`
 
 send_notification()
 {

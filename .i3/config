@@ -36,15 +36,9 @@ bindsym $mod+Shift+q kill
 # start program launcher
 bindsym F12 exec --no-startup-id rofi -show drun -config ~/.config/rofi/config.rasi
 
-################################################################################################
-## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
-################################################################################################
-
 bindsym $mod+Ctrl+m exec pwvucontrol
 bindsym $mod+F8 exec "~/.config/toggle_audio_sink.sh"
-
-
-################################################################################################
+bindsym $mod+F9 exec "~/.config/hotplug_monitor.sh"
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
