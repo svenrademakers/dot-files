@@ -8,7 +8,7 @@ set $mod Mod4
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 2
+default_border pixel 1
 default_floating_border 1pixel
 #for_window [class="^.*"] border pixel 1
 
@@ -265,7 +265,7 @@ mode "resize" {
 # Autostart applications
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id optimus-manager-qt
-exec_always --no-startup-id "killall -q picom; picom --config ~/.config/picom.conf"
+#exec_always --no-startup-id "killall -q picom; picom --config ~/.config/picom.conf"
 exec_always --no-startup-id "killall -q polybar; polybar"
 #exec --no-startup-id blueman-applet
 #exec --no-startup-id xfce4-power-manager
@@ -329,7 +329,7 @@ bindsym $mod+h bar mode toggle
 #############################
 
 # Set inner/outer gaps
-gaps inner 14
+gaps inner 5
 gaps outer -2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.

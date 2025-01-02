@@ -11,16 +11,16 @@ send_notification()
 
 connect ()
 {
-   xrandr --output eDP-1-1 --off
-   xrandr --output DP-0 --auto
-   xrandr --setprovideroutputsource modesetting NVIDIA-0
+   xrandr --output DP-4 --off
+   xrandr --output DP-0 --auto --primary
+   #xrandr --setprovideroutputsource modesetting NVIDIA-0
    nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
 }
 
 disconnect ()
 {
-   xrandr --output eDP-1-1 --auto
+   xrandr --output DP-4 --auto
 }
 
-[[ "$external_display_status" == "connected" ]] && connect || disconnect
+#[[ "$external_display_status" == "connected" ]] && connect || disconnect
 send_notification

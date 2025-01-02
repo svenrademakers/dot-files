@@ -1,4 +1,3 @@
-import = ["/home/svenr/.config/alacritty/themes/themes/citylights.toml"]
 
 [colors.primary]
 foreground = "0xdddddd"
@@ -14,4 +13,7 @@ family = "SauceCodePro Nerd Font"
 
 [selection]
 save_to_clipboard = true
+
+[general]
+import = ["/home/svenr/.config/alacritty/themes/themes/citylights.toml"]
 
