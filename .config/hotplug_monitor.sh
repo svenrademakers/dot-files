@@ -22,5 +22,5 @@ disconnect ()
    xrandr --output DP-4 --auto
 }
 
-#[[ "$external_display_status" == "connected" ]] && connect || disconnect
+connect || disconnect
 send_notification
