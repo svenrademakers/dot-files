@@ -1,6 +1,6 @@
 require("packert")
 --vim.opt.ignorecase = true
-vim.opt.mouse = 'n'
+vim.opt.mouse = 'a'
 vim.go.cmdheight = 0
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -52,7 +52,7 @@ vim.g.mapleader = " "
 vim.keymap.set('', 'n', 'j', { silent = true }) -- down
 vim.keymap.set('', 'e', 'k', { silent = true }) -- up
 vim.keymap.set('', 'i', 'l', { silent = true }) -- right
-vim.keymap.set('', 'j', 'e', { silent = true }) -- end of word 
+vim.keymap.set('', 'j', 'e', { silent = true }) -- end of word
 vim.keymap.set('', 'k', 'n', { silent = true }) -- next search
 vim.keymap.set('', 'l', 'i', { silent = true }) -- insert
 ---- extra remap
