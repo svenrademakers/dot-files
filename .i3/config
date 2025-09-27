@@ -263,8 +263,8 @@ mode "resize" {
 #bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id optimus-manager-qt
+exec --no-startup-id feh --bg-fill /home/svenr/.config/rust_wallpaper.png
+#exec --no-startup-id optimus-manager-qt
 #exec_always --no-startup-id "killall -q picom; picom --config ~/.config/picom.conf"
 exec_always --no-startup-id "killall -q polybar; polybar"
 #exec --no-startup-id blueman-applet

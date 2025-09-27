@@ -6,14 +6,13 @@ foreground = "0xdddddd"
 TERM = "xterm-256color"
 
 [font]
-size = 10
+size = 11.5
 
 [font.normal]
-family = "SauceCodePro Nerd Font"
+family = "SauceCodePro Nerd Font Mono"
 
 [selection]
 save_to_clipboard = true
 
 [general]
 import = ["/home/svenr/.config/alacritty/themes/themes/citylights.toml"]
-
