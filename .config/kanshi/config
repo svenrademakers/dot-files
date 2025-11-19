@@ -1,0 +1,21 @@
+output "LG Electronics LG HDR WQHD+ 206NTGY57999" {
+	mode 3840x1600@143.998
+	position 0,0
+	alias $HOME_1
+}
+
+output "BOE 0x0AA7 Unknown" {
+	mode 2560x1600@60.001
+	position 0,0
+	scale 2
+	alias $INTERNAL
+}
+
+profile home_1 {
+	output $HOME_1 enable
+	output $INTERNAL disable
+}
+
+profile detached {
+	output $INTERNAL enable
+}
