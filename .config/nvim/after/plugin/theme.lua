@@ -59,5 +59,6 @@ require('bufferline').setup {
         },
         separator_style = { '', '' },
         diagnostics = "nvim_lsp",
+        middle_mouse_command = "bdelete! %d",
     }
 }

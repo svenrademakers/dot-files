@@ -25,40 +25,26 @@ vim.updatetime = 50
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
 vim.opt.wrap = true
---vim.opt.syntax = 'on'
---vim.api.nvim_command('filetype plugin indent on')
-----Set completeopt to have a better completion experience
----- :help completeopt
----- menuone: popup even when there's only one match
----- noinsert: Do not insert text until a selection is made
----- noselect: Do not select, force to select one from the menu
----- shortness: avoid showing extra messages when using completion
----- updatetime: set updatetime for CursorHold
---vim.opt.completeopt = {'menuone', 'noselect', 'noinsert'}
---vim.opt.shortmess = vim.opt.shortmess + { c = true}
---vim.api.nvim_set_option('updatetime', 300)
---
----- Fixed column for diagnostics to appear
----- Show autodiagnostic popup on cursor hover_range
----- Goto previous / next diagnostic warning / error
----- Show inlay_hints more frequently
---vim.cmd([[
---set signcolumn=yes
---autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
---]])
-
----- colemak remaps
 vim.g.mapleader = " "
-vim.keymap.set('', 'n', 'j', { silent = true }) -- down
-vim.keymap.set('', 'e', 'k', { silent = true }) -- up
-vim.keymap.set('', 'i', 'l', { silent = true }) -- right
-vim.keymap.set('', 'j', 'e', { silent = true }) -- end of word
-vim.keymap.set('', 'k', 'n', { silent = true }) -- next search
-vim.keymap.set('', 'l', 'i', { silent = true }) -- insert
+vim.keymap.set('n', 'n', 'j', { silent = true }) -- down
+vim.keymap.set('n', 'e', 'k', { silent = true }) -- up
+vim.keymap.set('n', 'i', 'l', { silent = true }) -- right
+vim.keymap.set('n', 'j', 'e', { silent = true }) -- end of word
+vim.keymap.set('n', 'J', 'E', { silent = true }) -- end of word
+vim.keymap.set('n', 'k', 'n', { silent = true }) -- next search
+vim.keymap.set('n', 'K', 'N', { silent = true }) -- next search
+vim.keymap.set('n', 'l', 'i', { silent = true }) -- insert
+vim.keymap.set('n', 'L', 'I', { silent = true }) -- insert
+
 ---- extra remap
-vim.keymap.set('', '<leader>e', 'e', { silent = true })
-vim.keymap.set('', '<leader>i', 'i', { silent = true })
-vim.keymap.set('', '<leader>n', 'n', { silent = true })
+vim.keymap.set('n', '<leader>e', 'e', { silent = true })
+vim.keymap.set('n', '<leader>i', 'i', { silent = true })
+vim.keymap.set('n', '<leader>n', 'n', { silent = true })
+-- Make `im` behave like `iw`
+vim.keymap.set('o', 'im', 'iw')
+vim.keymap.set('x', 'im', 'iw')  -- also for visual mode (viw → vim)
+vim.keymap.set('n', 'l', 'c')
+vim.keymap.set('o', 'l', 'c')
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = {"*"},
@@ -68,3 +54,4 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         vim.fn.setpos(".", save_cursor)
     end,
 })
+

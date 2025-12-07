@@ -1,73 +1,52 @@
---
--- LSP
-local lsp_zero = require('lsp-zero')
 
-lsp_zero.on_attach(function(client, bufnr)
-    -- see :help lsp-zero-keybindings
-    -- to learn the available actions
-    lsp_zero.default_keymaps({ buffer = bufnr })
+vim.lsp.config.typescript_server = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = { 'typescript-language-server', '--stdio'},
+    filetypes = { 'typescript' },
+    root_markers = {"package.json", ".git"},
+}
+vim.lsp.enable('typescript_server')
 
-    lsp_zero.buffer_autoformat()
-    local opts = { buffer = bufnr }
-    vim.keymap.set({ 'n', 'x' }, 'gq', function()
-        vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
-    end, opts)
-end)
+vim.lsp.config.rust_analyzer = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = { 'rust-analyzer' },
+    filetypes = { 'rust' },
+    root_markers = {"Cargo.toml", ".git"},
+    single_file_support = true,
+    before_init = function(init_params, config)
+        -- See https://github.com/rust-lang/rust-analyzer/blob/eb5da56d839ae0a9e9f50774fa3eb78eb0964550/docs/dev/lsp-extensions.md?plain=1#L26
+        if config.settings and config.settings['rust-analyzer'] then
+            init_params.initializationOptions = config.settings['rust-analyzer']
+        end
+    end,
+}
 
-lsp_zero.set_sign_icons({
-    error = '',
-    warn = '',
-    hint = '',
-    info = '',
-})
+vim.lsp.enable('rust_analyzer')
 
---
--- Mason
-require("mason").setup()
-require('mason-lspconfig').setup({
-    handlers = {
-        -- this first function is the "default handler"
-        -- it applies to every language server without a "custom handler"
-        function(server_name)
-            require('lspconfig')[server_name].setup({})
-        end,
-    }
-})
+vim.lsp.inlay_hint.enable(true)
 
---
--- cmp (auto completion)
-local cmp = require('cmp')
-local cmp_format = require('lsp-zero').cmp_format({ details = true })
-local cmp_action = require('lsp-zero').cmp_action()
+vim.keymap.set("n", "<leader>ie", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "Toggle inlay hints" })
 
-cmp.setup({
-    sources = {
-        { name = 'nvim_lsp' },
-        { name = 'buffer' },
-        { name = 'path' },
-        { name = 'luasnip' },
-        { name = 'nvim_lua' },
-    },
-    mapping = cmp.mapping.preset.insert({
-        -- confirm completion
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        ['<C-c>'] = cmp.mapping.abort(),
+local signs = {
+  Error = " ",
+  Warn  = " ",
+  Hint  = "󰌶 ",
+  Info  = " ",
+}
 
-        -- scroll up and down the documentation window
-        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-d>'] = cmp.mapping.scroll_docs(4),
-        ['<Tab>'] = cmp_action.tab_complete(),
-        ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
-    }),
-    -- always select first item in completion menu
-    preselect = 'item',
-    completion = {
-        completeopt = 'menu,menuone,noinsert'
-    },
-    window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-    },
-    --- (Optional) Show source name in completion menu
-    formatting = cmp_format,
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
+
+-- Enable format on save only for Rust files
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.rs",
+  callback = function()
+    vim.lsp.buf.format({ async = false })
+  end,
 })
